@@ -1,0 +1,70 @@
+<div>
+    <!-- DIRECT CHAT -->
+    <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+    <div class="box box-warning direct-chat direct-chat-warning">
+      <div class="box-header with-border">
+        <h3 class="box-title"><form> {{to.toKey}} -
+            <input type="text" 
+            [(ngModel)]="to.name"
+            name="name" 
+            class="form-control header-controlform" 
+            id="inputName" 
+            placeholder="{{'NAME' | translate}}"
+            (blur)="toOnBlurMethod()"
+            #name="ngModel"> <input type="text" 
+            [(ngModel)]="to.identity"
+            name="identity" 
+            class="form-control header-controlform" 
+            id="inputIdentity" 
+            placeholder="{{'IDENTITY' | translate}}"
+            (blur)="toOnBlurMethod()"
+            #identity="ngModel">
+            <input type="text" 
+            [(ngModel)]="to.contractNumber"
+            name="contractNumber" 
+            class="form-control header-controlform" 
+            id="inputContractNumber" 
+            (blur)="toOnBlurMethod()"
+            placeholder="{{'CONTRACT-NUMBER' | translate}}"
+            #contractNumber="ngModel">  </form></h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <!-- Conversations are loaded here -->
+        <div class="direct-chat-messages">
+            <div [ngClass]="message.incoming ? 'direct-chat-msg' : 'direct-chat-msg right'"  *ngFor="let message of listMessage">
+                <div class="direct-chat-info clearfix">
+                  <span [ngClass]="message.incoming ? 'direct-chat-name pull-left' : 'direct-chat-name pull-right'">{{to.name}}</span>
+                  <span [ngClass]="message.incoming ? 'direct-chat-timestamp pull-right' : 'direct-chat-timestamp pull-left'">23 Jan 2:00 pm</span>
+                </div>
+                <img class="direct-chat-img" src="../../../assets/image/user1-128x128.jpg" alt="message user image">
+                <div class="direct-chat-text">
+                  {{message.text}}
+                </div>
+              </div>
+        </div>
+          
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <form action="#" method="post">
+          <div class="input-group">
+            <input type="text" name="message" placeholder="{{'TYPE-MESSAGE' | translate}}" class="form-control">
+            <span class="input-group-btn">
+                  <button type="button" class="btn btn-warning btn-flat">{{'SEND' | translate}}</button>
+                </span>
+          </div>
+        </form>
+      </div>
+      <!-- /.box-footer-->
+    </div>
+    <!--/.direct-chat -->    
+  </div>
+  
+  

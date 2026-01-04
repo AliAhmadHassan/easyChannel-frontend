@@ -1,0 +1,45 @@
+<div class="col-md-6" style="margin-left:0%">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">{{'NEWa' | translate}} {{'SITUATION' | translate}}</h3>
+      </div>
+      <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+        <div [ngClass]="classCss" role="alert" *ngIf="message">
+          <strong>{{ message.text }}</strong>
+        </div>
+        <div class="box-body">
+          <div [ngClass]="getFormSituationClass(name.invalid,name.dirty)">
+            <label for="inputName" class="col-sm-2 control-label">{{'NAME' | translate}}</label>
+            <div class="col-sm-10">
+              <input type="text" 
+                      [(ngModel)]="situation.name"
+                      name="name" 
+                      class="form-control" 
+                      id="inputName" 
+                      placeholder="{{'NAME' | translate}}"
+                      #name="ngModel" 
+                      required>
+              <span class="help-block" *ngIf="name.invalid && name.dirty">{{'NAME' | translate}} {{'IS-REQUIRED' | translate}}</span>
+            </div>
+          </div>
+  
+          <div [ngClass]="getFormSituationClass(active.invalid,active.dirty)">
+            <label for="inputActive" class="col-sm-2 control-label">{{'ACTIVE' | translate}}</label>
+            <div class="col-sm-10">
+              <input type="checkbox" 
+                      [(ngModel)]="situation.active"
+                      name="active" 
+                      id="inputActive" 
+                      [checked]="situation.active"
+                      #active="ngModel">
+              <span class="help-block" *ngIf="active.invalid && active.dirty">{{'ACTIVE' | translate}} {{'IS-REQUIRED' | translate}}</span>
+            </div>
+          </div>
+  
+        </div>
+        <div class="box-footer">
+          <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Submit</button>
+        </div>
+      </form>
+    </div>
+    </div>

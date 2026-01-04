@@ -1,0 +1,46 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" style="background-color: white;" placeholder="Search...">
+        <span class="input-group-btn">
+          <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: white;">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+    
+    <div *ngFor="let item of listChat" (click)="directChat(item.to.id)">
+      {{item.to.toKey}}
+    </div>
+
+    <div class="box-footer box-comments">
+
+
+
+      <div class="box-comment" *ngFor="let to of listTo" (click)="directChat(to.id)" style="cursor: pointer;">
+        <!-- User image -->
+        <!--<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">-->
+        <i class="fa fa-whatsapp" style="width: 20px; float: left; font-size: large"></i>
+
+        <div class="comment-text">
+          <span class="username">
+            {{to.name}}
+            <span class="text-muted pull-right">8:03</span>
+          </span>
+          <!-- /.username -->
+          {{to.situation.name}}
+        </div>
+        <!-- /.comment-text -->
+      </div>
+      <!-- /.box-comment -->
+
+      
+    </div>
+  </section>
+  <!-- /.sidebar -->
+</aside>
